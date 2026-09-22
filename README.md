@@ -44,13 +44,13 @@ git init
 git add .
 git commit -m "Initial commit: ICMR antimicrobial use guide"
 git branch -M main
-git remote add origin https://github.com/shivesh2334-ai/antibiotic-guide.git
+git remote add origin https://github.com/<your-account>/<your-repository>.git
 git push -u origin main
 ```
 
-(If you're working from the GitHub web UI or Working Copy on iPad instead:
-create a new repository named `antibiotic-guide` under your account, then
-upload/commit this project's files there.)
+(If you're working from the GitHub web UI or Working Copy on iPad instead,
+create a repository under your account, then upload/commit this project's
+files there.)
 
 ### 2. Deploy to Vercel
 
