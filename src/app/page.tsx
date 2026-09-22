@@ -40,9 +40,10 @@ export default function Home() {
 
       <div className="max-w-6xl mx-auto px-5 py-6 flex flex-col md:flex-row gap-8">
         <aside className="md:w-64 shrink-0">
-          <label className="block mb-4">
+          <label htmlFor="guide-search" className="block mb-4">
             <span className="sr-only">Search syndromes, organisms or drugs</span>
             <input
+              id="guide-search"
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
