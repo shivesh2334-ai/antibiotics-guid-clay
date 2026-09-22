@@ -133,7 +133,7 @@ export const chapters: Chapter[] = [
         ],
       },
       {
-        name: "Cholera-related severe dengue / acute febrile illness (empiric)",
+        name: "Acute febrile illness (empiric, malaria/dengue tests negative)",
         regimens: [
           {
             preferred: "Doxycycline may be considered empirically if RDTs for malaria and dengue are negative",
@@ -504,7 +504,7 @@ export const chapters: Chapter[] = [
       {
         name: "Erysipelas",
         regimens: [
-          { organism: "Propionibacterium acnes / MSSA", preferred: "Amoxicillin-clavulanate", duration: "5-7 days" },
+          { organism: "S. pyogenes / beta-hemolytic streptococci", preferred: "Amoxicillin-clavulanate", duration: "5-7 days" },
         ],
       },
       {
