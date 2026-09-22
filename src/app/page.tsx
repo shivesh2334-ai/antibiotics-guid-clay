@@ -11,6 +11,10 @@ export default function Home() {
 
   const results = useMemo(() => searchChapters(query), [query]);
   const isSearching = query.trim().length > 0;
+  const matchCount = useMemo(
+    () => results.reduce((count, chapter) => count + chapter.conditions.length, 0),
+    [results],
+  );
 
   const active = isSearching
     ? results
@@ -72,9 +76,8 @@ export default function Home() {
         <main className="flex-1 min-w-0">
           {isSearching && (
             <p className="text-sm text-ink/60 mb-4">
-              {results.reduce((n, c) => n + c.conditions.length, 0)} matching
-              condition{results.reduce((n, c) => n + c.conditions.length, 0) === 1 ? "" : "s"}{" "}
-              for &ldquo;{query}&rdquo;
+              {matchCount} matching condition{matchCount === 1 ? "" : "s"} for
+              &ldquo;{query}&rdquo;
             </p>
           )}
 
