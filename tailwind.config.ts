@@ -30,8 +30,8 @@ const config: Config = {
         rule: "#DDDED6",
       },
       fontFamily: {
-        serif: ["var(--font-source-serif)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["Georgia", "Times New Roman", "serif"],
+        sans: ["Arial", "Helvetica Neue", "system-ui", "sans-serif"],
       },
     },
   },
