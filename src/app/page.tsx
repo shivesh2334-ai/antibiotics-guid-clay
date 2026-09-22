@@ -61,6 +61,7 @@ export default function Home() {
               <button
                 key={c.id}
                 onClick={() => setActiveId(c.id)}
+                aria-current={c.id === activeId ? "page" : undefined}
                 className={`text-left whitespace-nowrap md:whitespace-normal shrink-0 px-3 py-2 rounded-sm text-sm transition-colors ${
                   c.id === activeId
                     ? "bg-teal-700 text-white"
@@ -99,8 +100,8 @@ export default function Home() {
               </div>
 
               <div className="bg-white/70 border border-rule rounded-sm px-5 py-2">
-                {chapter.conditions.map((cond, i) => (
-                  <RegimenTable key={i} condition={cond} />
+                {chapter.conditions.map((cond) => (
+                  <RegimenTable key={cond.name} condition={cond} />
                 ))}
               </div>
 
