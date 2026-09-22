@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f5f1;
+  --foreground: #171e1b;
+  --font-inter: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-source-serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+::selection {
+  background: #d7e5de;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #2f6152;
+  outline-offset: 2px;
+}
