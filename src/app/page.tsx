@@ -11,6 +11,7 @@ export default function Home() {
 
   const results = useMemo(() => searchChapters(query), [query]);
   const isSearching = query.trim().length > 0;
+  const matchCount = results.reduce((count, chapter) => count + chapter.conditions.length, 0);
 
   const active = isSearching
     ? results
@@ -36,9 +37,10 @@ export default function Home() {
 
       <div className="max-w-6xl mx-auto px-5 py-6 flex flex-col md:flex-row gap-8">
         <aside className="md:w-64 shrink-0">
-          <label className="block mb-4">
+          <label htmlFor="guide-search" className="block mb-4">
             <span className="sr-only">Search syndromes, organisms or drugs</span>
             <input
+              id="guide-search"
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -72,8 +74,8 @@ export default function Home() {
         <main className="flex-1 min-w-0">
           {isSearching && (
             <p className="text-sm text-ink/60 mb-4">
-              {results.reduce((n, c) => n + c.conditions.length, 0)} matching
-              condition{results.reduce((n, c) => n + c.conditions.length, 0) === 1 ? "" : "s"}{" "}
+              {matchCount} matching
+              condition{matchCount === 1 ? "" : "s"}{" "}
               for &ldquo;{query}&rdquo;
             </p>
           )}
