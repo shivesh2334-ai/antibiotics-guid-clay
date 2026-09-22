@@ -1,0 +1,40 @@
+name: Arrange repository
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  arrange:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unpack source archive into repository root
+        run: |
+          set -eux
+          rm -rf .unpacked
+          mkdir .unpacked
+          unzip -q antibiotic-guide.zip -d .unpacked
+          src=".unpacked/antibiotic-guide"
+          test -f "$src/package.json"
+          shopt -s dotglob
+          for item in "$src"/*; do
+            name="$(basename "$item")"
+            [ "$name" = ".git" ] && continue
+            rm -rf "./$name"
+            mv "$item" "./$name"
+          done
+          rm -rf .unpacked antibiotic-guide.zip
+      - name: Commit arranged application
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Arrange application source for Vercel"
+          git push
