@@ -5,7 +5,7 @@ antibiotic therapy, built from the **ICMR Treatment Guidelines for
 Antimicrobial Use in Common Syndromes, 2nd Edition (2019)** (Indian Council
 of Medical Research, New Delhi).
 
-Covers 10 syndrome groups: acute fever & tropical infections, sepsis,
+Covers 11 syndrome groups: acute fever & tropical infections, sepsis,
 respiratory tract infections & CAP, intra-abdominal infections/SBP/diarrhea,
 skin & soft tissue infections, bone & joint infections, CNS infections,
 urinary tract infections, hospital-acquired infections (SSI prophylaxis,
