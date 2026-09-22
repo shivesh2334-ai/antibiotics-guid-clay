@@ -40,7 +40,7 @@ export default function RegimenTable({ condition }: { condition: Condition }) {
         ))}
         {condition.notes && condition.notes.length > 0 && (
           <ul className="mt-2 space-y-1 text-sm text-ink/70 list-disc list-outside pl-4">
-            {condition.notes.map((n, i) => (
+            {condition.notes.map((n) => (
               <li key={n}>{n}</li>
             ))}
           </ul>

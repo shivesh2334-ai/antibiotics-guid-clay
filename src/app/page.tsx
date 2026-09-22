@@ -50,7 +50,6 @@ export default function Home() {
           </label>
 
           <nav
-            aria-disabled={isSearching}
             className={`flex md:flex-col gap-1 overflow-x-auto md:overflow-visible pb-2 md:pb-0 ${
               isSearching ? "opacity-40 pointer-events-none" : ""
             }`}
