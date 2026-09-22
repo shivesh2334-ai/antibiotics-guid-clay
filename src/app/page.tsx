@@ -12,10 +12,12 @@ export default function Home() {
   const results = useMemo(() => searchChapters(query), [query]);
   const isSearching = query.trim().length > 0;
   const matchCount = results.length;
-
-  const active = isSearching
+  const activeChapter = chapters.find((chapter) => chapter.id === activeId) ?? null;
+  const displayedChapters = isSearching
     ? results
-    : chapters.filter((c) => c.id === activeId);
+    : activeChapter
+      ? [activeChapter]
+      : [];
 
   return (
     <div className="min-h-screen">
@@ -81,11 +83,11 @@ export default function Home() {
             </p>
           )}
 
-          {active.length === 0 && (
+          {displayedChapters.length === 0 && (
             <p className="text-sm text-ink/60">No matches. Try a different term.</p>
           )}
 
-          {active.map((chapter) => (
+          {displayedChapters.map((chapter) => (
             <section key={chapter.id} className="mb-10">
               <div className="mb-4">
                 <h2 className="font-serif text-xl text-ink">
