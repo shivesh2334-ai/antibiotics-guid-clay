@@ -11,7 +11,7 @@ export default function Home() {
 
   const results = useMemo(() => searchChapters(query), [query]);
   const isSearching = query.trim().length > 0;
-  const matchCount = results.reduce((count, chapter) => count + chapter.conditions.length, 0);
+  const matchCount = results.length;
 
   const active = isSearching
     ? results
@@ -50,6 +50,7 @@ export default function Home() {
           </label>
 
           <nav
+            aria-disabled={isSearching}
             className={`flex md:flex-col gap-1 overflow-x-auto md:overflow-visible pb-2 md:pb-0 ${
               isSearching ? "opacity-40 pointer-events-none" : ""
             }`}
@@ -58,6 +59,7 @@ export default function Home() {
               <button
                 key={c.id}
                 onClick={() => setActiveId(c.id)}
+                disabled={isSearching}
                 className={`text-left whitespace-nowrap md:whitespace-normal shrink-0 px-3 py-2 rounded-sm text-sm transition-colors ${
                   c.id === activeId
                     ? "bg-teal-700 text-white"
@@ -75,7 +77,7 @@ export default function Home() {
           {isSearching && (
             <p className="text-sm text-ink/60 mb-4">
               {matchCount} matching
-              condition{matchCount === 1 ? "" : "s"}{" "}
+              chapter{matchCount === 1 ? "" : "s"}{" "}
               for &ldquo;{query}&rdquo;
             </p>
           )}
@@ -97,8 +99,8 @@ export default function Home() {
               </div>
 
               <div className="bg-white/70 border border-rule rounded-sm px-5 py-2">
-                {chapter.conditions.map((cond, i) => (
-                  <RegimenTable key={i} condition={cond} />
+                {chapter.conditions.map((cond) => (
+                  <RegimenTable key={cond.name} condition={cond} />
                 ))}
               </div>
 

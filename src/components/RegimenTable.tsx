@@ -5,9 +5,9 @@ export default function RegimenTable({ condition }: { condition: Condition }) {
     <div className="border-t border-rule py-5 first:border-t-0 first:pt-0">
       <h4 className="font-serif text-lg text-teal-900 mb-3">{condition.name}</h4>
       <div className="space-y-3">
-        {condition.regimens.map((r, i) => (
+        {condition.regimens.map((r) => (
           <div
-            key={i}
+            key={[r.organism ?? "", r.preferred, r.alternative ?? "", r.duration ?? ""].join("::")}
             className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-x-6 gap-y-1 text-[15px] leading-snug"
           >
             {r.organism && (
@@ -41,7 +41,7 @@ export default function RegimenTable({ condition }: { condition: Condition }) {
         {condition.notes && condition.notes.length > 0 && (
           <ul className="mt-2 space-y-1 text-sm text-ink/70 list-disc list-outside pl-4">
             {condition.notes.map((n, i) => (
-              <li key={i}>{n}</li>
+              <li key={n}>{n}</li>
             ))}
           </ul>
         )}
