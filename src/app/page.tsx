@@ -7,7 +7,7 @@ import DoseTable from "@/components/DoseTable";
 
 export default function Home() {
   const [query, setQuery] = useState("");
-  const [activeId, setActiveId] = useState(chapters[0].id);
+  const [activeId, setActiveId] = useState(chapters[0]?.id ?? "");
 
   const results = useMemo(() => searchChapters(query), [query]);
   const isSearching = query.trim().length > 0;
